@@ -3,6 +3,7 @@ Maskinlæringskurs, Tensorflow.js
 
 ## Kjøre koden
 yarn
+
 yarn watch
 
 ## Oppgaven - tolke håndskrevne tall
