@@ -17,7 +17,7 @@ limitations under the License.
 
 <html>
   <head>
-    <title>MNIST in TensorFlow.js Layers API</title>
+    <title>NORKART ML KURS</title>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-teal.min.css" />
   </head>
   <body>
@@ -60,14 +60,30 @@ limitations under the License.
         display: inline-block;
         width: 250px;
       }
+      .header{
+        width: 100vw;
+        height: 120px;
+        box-shadow: 4px 3px 4px #c7c7c7;
+        margin-left: -15px;
+        display: flex;
+        margin-bottom: 20px;
+      }
+      .header img{
+        height: 100px;
+      }
+      .header h3{
+
+      }
     </style>
 
     <div id="content">
-      <h3>TensorFlow.js: Train MNIST with the Layers API</h3>
-
+      <div class ='header'>
+        <img src = './norkartLabs.PNG'/>
+        <h3>ML-kurs: Tren MNIST for tallgjenkjenning</h3>
+      </div>
       <div>
         <div>
-          <span class="hparam-label">Model Type:</span>
+          <span class="hparam-label">Modelltype:</span>
           <select id="model-type">
             <option>ConvNet</option>
             <option>DenseNet</option>
@@ -75,11 +91,11 @@ limitations under the License.
         </div>
 
         <div>
-          <span class="hparam-label"># of training epochs:</span>
+          <span class="hparam-label"># trening epochs:</span>
           <input id="train-epochs" value="3">
         </div>
 
-        <button id="train">Load Data and Train Model</button>
+        <button id="train">Last data og tren modell</button>
       </div>
 
       <div id="status"></div>
