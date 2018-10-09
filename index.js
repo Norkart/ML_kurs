@@ -96,13 +96,6 @@ function createConvModel() {
  *
  * @returns {tf.Model} An instance of tf.Model.
  */
-function createDenseModel() {
-  const model = tf.sequential();
-  model.add(tf.layers.flatten({inputShape: [IMAGE_H, IMAGE_W, 1]}));
-  model.add(tf.layers.dense({units: 42, activation: 'relu'}));
-  model.add(tf.layers.dense({units: 10, activation: 'softmax'}));
-  return model;
-}
 
 /**
  * Compile and train the given model.
@@ -247,14 +240,7 @@ async function showPredictions(model) {
 
 function createModel() {
   let model;
-  const modelType = ui.getModelTypeId();
-  if (modelType === 'ConvNet') {
-    model = createConvModel();
-  } else if (modelType === 'DenseNet') {
-    model = createDenseModel();
-  } else {
-    throw new Error(`Invalid model type: ${modelType}`);
-  }
+  model = createConvModel();
   return model;
 }
 
