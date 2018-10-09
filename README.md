@@ -3,11 +3,6 @@
 Maskinlæringskurs, Tensorflow.js
 
 ## Pass på å ha installert:
-* En editor (f.eks. Visual Studio Code)
-* Google Chrome
-
-
-
 * _Windowsbrukere:_ Windos Subsystems for Linux (WLS)
   [(guide)](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/)
 * Node (versjon 8.9 eller nyere)
