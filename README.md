@@ -1,10 +1,10 @@
 # ML_kurs
 Maskinlæringskurs, Tensorflow.js
 
-## Kjøre koden
-`yarn`
-
-`yarn watch`
+## For å kjøre koden:
+`$ git clone https://github.com/Norkart/ML_kurs.git
+$ yarn
+$ yarn watch`
 
 ## Oppgaven - tolke håndskrevne tall
 
