@@ -20,39 +20,21 @@ import * as tf from "@tensorflow/tfjs";
 // This is a helper class for loading and managing MNIST data specifically.
 // It is a useful example of how you could create your own data manager class
 // for arbitrary data though. It's worth a look :)
-import { IMAGE_H, IMAGE_W, MnistData } from "./data";
+import { MnistData } from "./data";
 
 // This is a helper class for drawing loss graphs and MNIST images to the
 // window. For the purposes of understanding the machine learning bits, you can
 // largely ignore it
 import * as ui from "./ui";
 
+import createConvModel from './model.js';
+
 /**
  * Creates a convolutional neural network (Convnet) for the MNIST data.
  *
  * @returns {tf.Model} An instance of tf.Model.
  */
-function createConvModel() {
-  // Create a sequential neural network model. tf.sequential provides an API
-  // for creating "stacked" models where the output from one layer is used as
-  // the input to the next layer.
-  const model = tf.sequential();
 
-
-
-  /* ---------------------------
-    
-  
-  
-            INSERT CODE HERE
-
-  
-
-  ------------------------------ */
-
-
-  return model;
-}
 
 /**
  * Creates a model consisting of only flatten, dense and dropout layers.
