@@ -151,10 +151,8 @@ export function getTrainEpochs() {
 
 export function setTrainButtonCallback(callback) {
   const trainButton = document.getElementById('train');
-  const modelType = document.getElementById('model-type');
   trainButton.addEventListener('click', () => {
     trainButton.setAttribute('disabled', true);
-    modelType.setAttribute('disabled', true);
     callback();
   });
 }
