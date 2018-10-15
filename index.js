@@ -15,17 +15,17 @@
  * =============================================================================
  */
 
-import * as tf from '@tensorflow/tfjs';
+import * as tf from "@tensorflow/tfjs";
 
 // This is a helper class for loading and managing MNIST data specifically.
 // It is a useful example of how you could create your own data manager class
 // for arbitrary data though. It's worth a look :)
-import {IMAGE_H, IMAGE_W, MnistData} from './data';
+import { IMAGE_H, IMAGE_W, MnistData } from "./data";
 
 // This is a helper class for drawing loss graphs and MNIST images to the
 // window. For the purposes of understanding the machine learning bits, you can
 // largely ignore it
-import * as ui from './ui';
+import * as ui from "./ui";
 
 /**
  * Creates a convolutional neural network (Convnet) for the MNIST data.
@@ -38,48 +38,18 @@ function createConvModel() {
   // the input to the next layer.
   const model = tf.sequential();
 
-  // The first layer of the convolutional neural network plays a dual role:
-  // it is both the input layer of the neural network and a layer that performs
-  // the first convolution operation on the input. It receives the 28x28 pixels
-  // black and white images. This input layer uses 16 filters with a kernel size
-  // of 5 pixels each. It uses a simple RELU activation function which pretty
-  // much just looks like this: __/
-  model.add(tf.layers.conv2d({
-    inputShape: [IMAGE_H, IMAGE_W, 1],
-    kernelSize: 3,
-    filters: 16,
-    activation: 'relu'
-  }));
 
-  // After the first layer we include a MaxPooling layer. This acts as a sort of
-  // downsampling using max values in a region instead of averaging.
-  // https://www.quora.com/What-is-max-pooling-in-convolutional-neural-networks
-  model.add(tf.layers.maxPooling2d({poolSize: 2, strides: 2}));
 
-  // Our third layer is another convolution, this time with 32 filters.
-  model.add(tf.layers.conv2d({kernelSize: 3, filters: 32, activation: 'relu'}));
+  /* ---------------------------
+    
+  
+  
+            INSERT CODE HERE
 
-  // Max pooling again.
-  model.add(tf.layers.maxPooling2d({poolSize: 2, strides: 2}));
+  
 
-  // Add another conv2d layer.
-  model.add(tf.layers.conv2d({kernelSize: 3, filters: 32, activation: 'relu'}));
+  ------------------------------ */
 
-  // Now we flatten the output from the 2D filters into a 1D vector to prepare
-  // it for input into our last layer. This is common practice when feeding
-  // higher dimensional data to a final classification output layer.
-  model.add(tf.layers.flatten({}));
-
-  model.add(tf.layers.dense({units: 64, activation: 'relu'}));
-
-  // Our last layer is a dense layer which has 10 output units, one for each
-  // output class (i.e. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9). Here the classes actually
-  // represent numbers, but it's the same idea if you had classes that
-  // represented other entities like dogs and cats (two output classes: 0, 1).
-  // We use the softmax function as the activation for the output layer as it
-  // creates a probability distribution over our 10 classes so their output
-  // values sum to 1.
-  model.add(tf.layers.dense({units: 10, activation: 'softmax'}));
 
   return model;
 }
@@ -103,7 +73,7 @@ function createConvModel() {
  * @param {*} model The model to
  */
 async function train(model) {
-  ui.logStatus('Training model...');
+  ui.logStatus("Training model...");
 
   // Now that we've defined our model, we will define our optimizer. The
   // optimizer will be used to optimize our model's weight values during
@@ -125,7 +95,7 @@ async function train(model) {
   // An optimizer is an iterative method for minimizing an loss function.
   // It tries to find the minimum of our loss function with respect to the
   // model's weight parameters.
-  const optimizer = 'rmsprop';
+  const optimizer = "rmsprop";
 
   // We compile our model by specifying an optimizer, a loss function, and a
   // list of metrics that we will use for model evaluation. Here we're using a
@@ -139,8 +109,8 @@ async function train(model) {
   // function of the model.
   model.compile({
     optimizer,
-    loss: 'categoricalCrossentropy',
-    metrics: ['accuracy'],
+    loss: "categoricalCrossentropy",
+    metrics: ["accuracy"]
   });
 
   // Batch size is another important hyperparameter. It defines the number of
@@ -164,8 +134,8 @@ async function train(model) {
   const testData = data.getTestData();
 
   const totalNumBatches =
-      Math.ceil(trainData.xs.shape[0] * (1 - validationSplit) / batchSize) *
-      trainEpochs;
+    Math.ceil((trainData.xs.shape[0] * (1 - validationSplit)) / batchSize) *
+    trainEpochs;
 
   // During the long-running fit() call for model training, we include
   // callbacks, so that we can plot the loss and accuracy values in the page
@@ -179,17 +149,18 @@ async function train(model) {
       onBatchEnd: async (batch, logs) => {
         trainBatchCount++;
         ui.logStatus(
-            `Training... (` +
-            `${(trainBatchCount / totalNumBatches * 100).toFixed(1)}%` +
-            ` complete). To stop training, refresh or close page.`);
-        ui.plotLoss(trainBatchCount, logs.loss, 'train');
-        ui.plotAccuracy(trainBatchCount, logs.acc, 'train');
+          `Training... (` +
+            `${((trainBatchCount / totalNumBatches) * 100).toFixed(1)}%` +
+            ` complete). To stop training, refresh or close page.`
+        );
+        ui.plotLoss(trainBatchCount, logs.loss, "train");
+        ui.plotAccuracy(trainBatchCount, logs.acc, "train");
         await tf.nextFrame();
       },
       onEpochEnd: async (epoch, logs) => {
         valAcc = logs.val_acc;
-        ui.plotLoss(trainBatchCount, logs.val_loss, 'validation');
-        ui.plotAccuracy(trainBatchCount, logs.val_acc, 'validation');
+        ui.plotLoss(trainBatchCount, logs.val_loss, "validation");
+        ui.plotAccuracy(trainBatchCount, logs.val_acc, "validation");
         await tf.nextFrame();
       }
     }
@@ -199,8 +170,9 @@ async function train(model) {
   const testAccPercent = testResult[1].dataSync()[0] * 100;
   const finalValAccPercent = valAcc * 100;
   ui.logStatus(
-      `Final validation accuracy: ${finalValAccPercent.toFixed(1)}%; ` +
-      `Final test accuracy: ${testAccPercent.toFixed(1)}%`);
+    `Final validation accuracy: ${finalValAccPercent.toFixed(1)}%; ` +
+      `Final test accuracy: ${testAccPercent.toFixed(1)}%`
+  );
 }
 
 /**
@@ -253,14 +225,14 @@ async function load() {
 // This is our main function. It loads the MNIST data, trains the model, and
 // then shows what the model predicted on unseen test data.
 ui.setTrainButtonCallback(async () => {
-  ui.logStatus('Loading MNIST data...');
+  ui.logStatus("Loading MNIST data...");
   await load();
 
-  ui.logStatus('Creating model...');
+  ui.logStatus("Creating model...");
   const model = createModel();
   model.summary();
 
-  ui.logStatus('Starting model training...');
+  ui.logStatus("Starting model training...");
   await train(model);
 
   showPredictions(model);
