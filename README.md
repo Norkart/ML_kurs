@@ -12,6 +12,7 @@ Maskinlæringskurs, Tensorflow.js
   ```
 
 ## For å kjøre koden:
+
 Clone repositoriet, gå inn i mappen, installer dependencies og start prosjektet med følgende kommandoer i terminalen:
 
 ```bash
@@ -31,7 +32,15 @@ steps, plotting loss and accuracy as the model is training. Training time can
 be reduced by computing accuracy over fewer examples less often.
 
 ## Datasett
+
 Datasettet dere skal trene på er et klassisk datasett for maskinlæring - MNIST - en samling av håndskrevne tall. Koden er allerede satt
 
 Note: currently the entire dataset of MNIST images is stored in a PNG image we have
 sprited, and the code in `data.js` is responsible for converting it into `Tensor`s.
+
+## Ordliste
+
+- Epoch: antall ganger modellen får "se" hele datasettet
+- Loss: Summert feil for hvert eksempel i trening/valideringssett
+- Strides: Antall steg(piksler) et filter flytter seg for hver gang den regner ut en aktiveringsverdi
+- Softmax classifier: et lag som konverterer score for hver klasse gitt av nettverket til sannsynlighets-verdier
