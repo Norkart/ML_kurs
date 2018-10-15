@@ -31,6 +31,7 @@ limitations under the License.
         padding-left: 54px;
         margin-left: 145px;
         position: absolute;
+        text-align: center;
         /* background:white; */
       }
       body, input, select, button {
@@ -39,9 +40,9 @@ limitations under the License.
         /* background-color:  #2e2d30; */
         /* color: white; */
       }
-      *:focus {
+      /* *:focus {
         outline: 1px solid #51a026;
-      }
+      } */
       body{
         height: 100vh;        
       }
@@ -89,6 +90,7 @@ limitations under the License.
         display: inline-block;
         width: 250px;
         margin-bottom: 5px;
+        font-weight: 700;
       }
       .header{
         width: 100vw;
@@ -150,15 +152,15 @@ limitations under the License.
         /* display: inline-block; */
       }
 
-      .content-row > select, input{
+      /* .content-row > select, input{
         height: 40px;
         width: 200px;
         padding-left: 13px;
         /* padding-right: 13px; */
         /* background: #404040; */
         /* color: white; */
-        /* border: none; */
-    }
+        /* border: none;
+    } */
 
       select > option{
         height: 40px;
@@ -170,6 +172,50 @@ limitations under the License.
         margin-top: 30px;
         display: block;
       }
+
+      .col-3 {
+        width: 100%;
+        margin-bottom: 10px;
+        position: relative;
+      }
+
+      input[type="text"] {
+        font: 15px/24px "Lato", Arial, sans-serif;
+        color: #333;
+        width: 100%;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+      }
+
+      input:focus{
+        outline: none;
+      }
+
+      .effect-1 {
+        border: 0;
+        width: 200px;
+        text-align: center;
+        font-size: 32pt;
+        font-weight: 100;
+        padding: 7px 0;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .effect-1 ~ .focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #4caf50;
+        transition: 0.4s;
+      }
+      .effect-1:focus ~ .focus-border {
+        width: 100%;
+        transition: 0.4s;
+      }
+
+      
 
 
     </style>
@@ -188,12 +234,12 @@ limitations under the License.
     </div>
     <div id="content">
       <div>
+        <div class="col-3">
+          <input id="train-epochs" value="3" class="effect-1">
+          <span class="focus-border"></span>
+        </div>
         <div>
-          <span class="hparam-label"># trening epochs:</span>
-          <br>
-          <input id="train-epochs" value="3">
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span class="hparam-label">Antall trening-epochs</span>
         </div>
         <div class="content-row" id="content-row-button">
           <button id="train">Last data og tren modell</button>
