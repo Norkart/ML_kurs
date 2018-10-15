@@ -20,14 +20,30 @@ limitations under the License.
     <title>NORKART ML KURS</title>
     <link rel="shortcut icon" type="image/ico" href="./favicon.ico"/>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-teal.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   </head>
   <body>
     <style>
+
+      
       #content {
-        padding: 15px;
+        padding: 50px;
+        padding-left: 54px;
+        margin-left: 145px;
+        position: absolute;
+        /* background:white; */
       }
       body, input, select, button {
-        font-family: monospace;
+        /* font-family: monospace; */
+        font-family: 'Roboto', sans-serif;
+        /* background-color:  #2e2d30; */
+        /* color: white; */
+      }
+      *:focus {
+        outline: 1px solid #51a026;
+      }
+      body{
+        height: 100vh;        
       }
       canvas {
         width: 200px;
@@ -35,13 +51,25 @@ limitations under the License.
       .prediction-canvas{
         width: 100px;
       }
+      button {
+        color: white;
+        height: 40px;
+        width: 200px;
+        background: #51a026;
+        border: none;
+      }
+
+      button:hover {
+        background: #487d2b;
+
+      }
       .pred {
         font-size: 20px;
         line-height: 25px;
         width: 100px;
       }
       .pred-correct {
-        background-color: #00cf00;
+        background-color: #51a026;
       }
       .pred-incorrect {
         background-color: red;
@@ -60,6 +88,7 @@ limitations under the License.
       .hparam-label {
         display: inline-block;
         width: 250px;
+        margin-bottom: 5px;
       }
       .header{
         width: 100vw;
@@ -72,31 +101,112 @@ limitations under the License.
       .header img{
         height: 100px;
       }
-      .header h3{
-
+      #headertext{
+        white-space: nowrap;
+        position: relative;
+        width: auto;
+        margin-top: 55px;
+        margin-left: 2px;
+        transform: rotate(90deg);
       }
+
+      #headertext > p {
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+
+      #headertext > h3 {
+        font-weight: 100;
+        font-size: 33pt;
+        margin-top: 0;
+      }
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 145px;
+        height: 100vh;
+        box-shadow: 0 0px 1px rgba(0, 0, 0, 0.12), 0 0px 6px rgba(0, 0, 0, 0.24);
+      }
+
+      .sidebar > div{
+        margin-top: 15vh;
+      }
+      #norkartlabsimg {
+        width: 145px;
+      }
+
+      #kurstekst {
+        font-weight: 700;
+        text-align: center;
+        margin-top: 50px;
+        font-size: 12pt;
+      }
+
+      .content-row {
+        height: 85px;
+        font-weight: 700;
+        /* display: inline-block; */
+      }
+
+      .content-row > select, input{
+        height: 40px;
+        width: 200px;
+        padding-left: 13px;
+        /* padding-right: 13px; */
+        /* background: #404040; */
+        /* color: white; */
+        /* border: none; */
+    }
+
+      select > option{
+        height: 40px;
+        padding-left: 13px;
+      }
+
+      #content-row-button {
+        /* text-align: center; */
+        margin-top: 30px;
+        display: block;
+      }
+
+
     </style>
 
-    <div id="content">
-      <div class ='sidebar'>
-        <img src = './norkartLabs.PNG'/>
-        <h3>ML-kurs: Tren MNIST for tallgjenkjenning</h3>
-      </div>
+    <div class ='sidebar'>
       <div>
-        <div>
+        <img id = 'norkartlabsimg' src = './norkartLabs.PNG'/>
+        <p id ='kurstekst'>Kurs</p>
+
+        <div id = 'headertext'>
+          <!-- <p>Kurs</p> -->
+          <h3>Maskinlæring</p>
+          <!-- <p>Tren MNIST for tallgjenkjenning</p> -->
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div>
+        <div class="content-row">
           <span class="hparam-label">Modelltype:</span>
+          <br>
           <select id="model-type">
             <option>ConvNet</option>
             <option>DenseNet</option>
           </select>
         </div>
 
-        <div>
+        <div class="content-row">
           <span class="hparam-label"># trening epochs:</span>
+          <br>
           <input id="train-epochs" value="3">
+          <span class="highlight"></span>
+          <span class="bar"></span>
         </div>
-
-        <button id="train">Last data og tren modell</button>
+        <div class="content-row" id="content-row-button">
+          <button id="train">Last data og tren modell</button>
+        </div>
       </div>
 
       <div id="status"></div>
