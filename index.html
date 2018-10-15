@@ -27,11 +27,14 @@ limitations under the License.
 
       
       #content {
-        padding: 50px;
-        padding-left: 54px;
-        margin-left: 145px;
         position: absolute;
+        top: 20px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
         text-align: center;
+        padding-left: 100px;
         /* background:white; */
       }
       body, input, select, button {
@@ -39,6 +42,7 @@ limitations under the License.
         font-family: 'Roboto', sans-serif;
         /* background-color:  #2e2d30; */
         /* color: white; */
+        overflow: auto;
       }
       /* *:focus {
         outline: 1px solid #51a026;
@@ -174,7 +178,8 @@ limitations under the License.
       }
 
       .col-3 {
-        width: 100%;
+        width: 200px;
+        display: inline-block;
         margin-bottom: 10px;
         position: relative;
       }
@@ -214,8 +219,28 @@ limitations under the License.
         width: 100%;
         transition: 0.4s;
       }
-
-      
+      #status {
+        margin-bottom: 20px;
+        margin-top: 10px;
+        font-weight: 100;
+        font-size: 20pt;
+      }
+      .canvases > .label {
+        font-weight: 700;
+      }
+      #accuracy-label {
+        text-align: left;
+      }
+      #loss-label {
+        text-align: right;
+        margin-right: 20px;
+      }
+      #stats{
+        margin-bottom: 30px;
+      }
+      .plot-container{
+        height: 370px;
+      }
 
 
     </style>
@@ -233,7 +258,7 @@ limitations under the License.
       </div>
     </div>
     <div id="content">
-      <div>
+      <div id="init">
         <div class="col-3">
           <input id="train-epochs" value="3" class="effect-1">
           <span class="focus-border"></span>
