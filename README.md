@@ -22,12 +22,14 @@ $ yarn
 $ yarn watch
 
 ```
-
 ## Oppgaven - tolke håndskrevne tall
 
 Dere har hett fått en del kode som skal hjelpe dere med å lage en algoritme som kan tolke håndskrevne tall.
 
 Modellen vil regne ut nøyaktighet over et sett med 1000 eksempler, og plotte nøykatigheten til modellen underveis.
+
+## TensorFlow.js
+Link til dokumentasjon: https://js.tensorflow.org/api/0.13.0/#Layers
 
 ## Datasett
 
